@@ -7,6 +7,16 @@ A comprehensive Next.js application that provides intelligent GitHub profile ana
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 
+## 🚀 Upgrades
+
+This project has been recently upgraded with the following improvements:
+
+-   **ESLint Fixes**: All ESLint issues have been resolved, ensuring code quality and consistency.
+-   **Component Refactoring**: The user comparison feature has been refactored into its own component (`CompareUsersButton`) for better code organization and reusability.
+-   **Real AI Analysis**: A real implementation using the Gemini API for more accurate and intelligent profile analysis.
+-   **API Key Handling**: The application now properly handles the Gemini API key using environment variables, with clear instructions for setup.
+-   **Error Handling**: Improved error handling for the Gemini API, including model availability issues.
+
 ## ✨ Features
 
 ### 🔍 **GitHub User Search**
@@ -97,7 +107,15 @@ A comprehensive Next.js application that provides intelligent GitHub profile ana
    pnpm install
    ```
 
-3. **Run the development server**
+3. **Set up Gemini API Key**
+
+   Create a `.env.local` file in the root of the project and add your Gemini API key:
+
+   ```
+   NEXT_PUBLIC_GEMINI_API_KEY=your_api_key_here
+   ```
+
+4. **Run the development server**
 
    ```bash
    npm run dev
@@ -107,7 +125,7 @@ A comprehensive Next.js application that provides intelligent GitHub profile ana
    pnpm dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📱 **Usage**
@@ -148,6 +166,10 @@ The app uses the public GitHub API (no authentication required):
 
 - User data: `https://api.github.com/users/{username}`
 - Repositories: `https://api.github.com/users/{username}/repos`
+
+### Gemini API
+
+The app uses the Gemini API for AI-powered analysis. You need to provide an API key in the `.env.local` file.
 
 ### Image Configuration
 
