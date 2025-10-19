@@ -12,14 +12,14 @@ import { useState } from "react";
 import { useGitHubUser } from "./hooks/useGitHubUser";
 import { formatDate } from "./services/githubApi";
 import NotesDisplay from "./components/NotesDisplay";
-import UserComparison from "./components/UserComparison";
+import CompareUsersButton from "./components/CompareUsersButton";
 import ProfileAnalysis from "./components/ProfileAnalysis";
 import { HiUsers, HiSparkles } from "react-icons/hi";
+import LoadingUserData from "./components/LoadingUserData";
 
 export default function Home() {
   const [username, setUsername] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isComparisonOpen, setIsComparisonOpen] = useState<boolean>(false);
   const [isAnalysisOpen, setIsAnalysisOpen] = useState<boolean>(false);
 
   const { user, repos, isLoading, isError, error } = useGitHubUser(searchQuery);
@@ -42,13 +42,7 @@ export default function Home() {
           <section className="flex flex-col sm:flex-row justify-between items-start sm:items-center font-mono gap-4 sm:gap-0">
             <p className="font-semibold text-lg sm:text-xl md:text-2xl leading-tight">GitHub API Integration Challenge</p>
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsComparisonOpen(true)}
-                className="flex items-center gap-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
-              >
-                <HiUsers className="w-4 h-4" />
-                Compare Users
-              </button>
+              <CompareUsersButton />
               <DarkAndLightButton />
             </div>
           </section>
@@ -61,10 +55,7 @@ export default function Home() {
 
           {/* Loading State */}
           {isLoading && searchQuery && (
-            <div className="flex justify-center items-center p-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              <span className="ml-3 text-gray-600 dark:text-gray-400">Loading user data...</span>
-            </div>
+            <LoadingUserData />
           )}
 
           {/* Error State */}
@@ -273,12 +264,6 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* User Comparison Modal */}
-      <UserComparison
-        isOpen={isComparisonOpen}
-        onClose={() => setIsComparisonOpen(false)}
-      />
 
       {/* Profile Analysis Modal */}
       {user && repos && (
