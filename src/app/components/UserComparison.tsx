@@ -29,7 +29,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
 
     const canCompare = user1Data.data && user2Data.data && !user1Data.isLoading && !user2Data.isLoading;
 
-    const getWinnerIcon = (winner: 'user1' | 'user2' | 'tie', user1Name: string, user2Name: string) => {
+    const getWinnerIcon = (winner: 'user1' | 'user2' | 'tie') => {
         if (winner === 'tie') return <span className="text-gray-500">🤝</span>;
         if (winner === 'user1') return <span className="text-yellow-500">👑</span>;
         return <span className="text-yellow-500">👑</span>;
@@ -186,7 +186,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
                                             <HiCode className="w-5 h-5 text-gray-500" />
                                             <span className="font-medium text-gray-900 dark:text-gray-100">Total Repositories</span>
                                         </div>
-                                        {getWinnerIcon(comparisonResult.winner.totalRepos, username1, username2)}
+                                        {getWinnerIcon(comparisonResult.winner.totalRepos)}
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">
@@ -214,7 +214,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
                                             <HiStar className="w-5 h-5 text-yellow-500" />
                                             <span className="font-medium text-gray-900 dark:text-gray-100">Total Stars</span>
                                         </div>
-                                        {getWinnerIcon(comparisonResult.winner.totalStars, username1, username2)}
+                                        {getWinnerIcon(comparisonResult.winner.totalStars)}
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">
@@ -242,7 +242,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
                                             <HiUser className="w-5 h-5 text-blue-500" />
                                             <span className="font-medium text-gray-900 dark:text-gray-100">Total Forks</span>
                                         </div>
-                                        {getWinnerIcon(comparisonResult.winner.totalForks, username1, username2)}
+                                        {getWinnerIcon(comparisonResult.winner.totalForks)}
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">
@@ -270,7 +270,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
                                             <HiClock className="w-5 h-5 text-green-500" />
                                             <span className="font-medium text-gray-900 dark:text-gray-100">Account Age</span>
                                         </div>
-                                        {getWinnerIcon(comparisonResult.winner.accountAge, username1, username2)}
+                                        {getWinnerIcon(comparisonResult.winner.accountAge)}
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">
@@ -297,7 +297,7 @@ export default function UserComparison({ isOpen, onClose }: UserComparisonProps)
                                         <div className="flex items-center gap-2">
                                             <span className="font-medium text-gray-900 dark:text-gray-100">Recent Activity (30 days)</span>
                                         </div>
-                                        {getWinnerIcon(comparisonResult.winner.recentActivity, username1, username2)}
+                                        {getWinnerIcon(comparisonResult.winner.recentActivity)}
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">

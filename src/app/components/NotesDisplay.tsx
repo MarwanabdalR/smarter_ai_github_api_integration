@@ -15,17 +15,17 @@ export default function NotesDisplay({ type, username, repoName }: NotesDisplayP
     const [notes, setNotes] = useState<(UserNote | RepoNote)[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const loadNotes = () => {
+    const loadNotes = React.useCallback(() => {
         if (type === 'user') {
             setNotes(getUserNotes(username));
         } else if (type === 'repo' && repoName) {
             setNotes(getRepoNotes(username, repoName));
         }
-    };
+    }, [type, username, repoName]);
 
     useEffect(() => {
         loadNotes();
-    }, [type, username, repoName]);
+    }, [loadNotes]);
 
     const handleNotesChange = () => {
         loadNotes();
@@ -59,7 +59,7 @@ export default function NotesDisplay({ type, username, repoName }: NotesDisplayP
 
                 {notes.length === 0 ? (
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                        No notes yet. Click "Add Note" to get started.
+                        No notes yet. Click &quot;Add Note&quot; to get started.
                     </p>
                 ) : (
                     <div className="space-y-2">

@@ -27,12 +27,7 @@ export async function analyzeGitHubProfile(request: AnalysisRequest): Promise<An
 function generateProfileAnalysis(user: GitHubUser, repos: GitHubRepo[]): ProfileAnalysis {
   // Calculate metrics
   const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-  const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
   const languages = getLanguageDistribution(repos);
-  const topLanguages = Object.entries(languages)
-    .sort(([,a], [,b]) => b - a)
-    .slice(0, 3)
-    .map(([lang]) => lang);
   
   const accountAge = Math.floor((Date.now() - new Date(user.created_at).getTime()) / (1000 * 60 * 60 * 24));
   const recentActivity = repos.filter(repo => {

@@ -3,9 +3,7 @@ import React from 'react'
 import { useTheme } from 'next-themes'
 import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 
-type Props = {}
-
-export default function DarkAndLightButton({ }: Props) {
+export default function DarkAndLightButton() {
     const { theme, setTheme } = useTheme()
 
     const toggleTheme = () => {

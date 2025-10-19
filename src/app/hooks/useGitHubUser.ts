@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchGitHubUser, fetchGitHubUserRepos, GitHubUser, GitHubRepo } from '../services/githubApi';
+import { fetchGitHubUser, fetchGitHubUserRepos } from '../services/githubApi';
 
 export function useGitHubUser(username: string | null) {
   const userQuery = useQuery({

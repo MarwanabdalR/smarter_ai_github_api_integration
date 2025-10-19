@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { HiX, HiSparkles, HiStar, HiTrendingUp, HiLightBulb, HiCode, HiClock } from 'react-icons/hi';
+import { HiX, HiSparkles, HiStar, HiTrendingUp, HiLightBulb, HiCode } from 'react-icons/hi';
 import { useProfileAnalysis } from '../hooks/useProfileAnalysis';
 import { GitHubUser, GitHubRepo } from '../services/githubApi';
 
@@ -68,7 +68,7 @@ export default function ProfileAnalysis({ isOpen, onClose, user, repos }: Profil
                             <div className="mb-6">
                                 <HiSparkles className="w-16 h-16 text-purple-600 dark:text-purple-400 mx-auto mb-4" />
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                                    Analyze {user.name || user.login}'s Profile
+                                    Analyze {user.name || user.login}&apos;s Profile
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                                     Get AI-powered insights about their coding expertise, activity patterns, and development strengths.
@@ -90,7 +90,7 @@ export default function ProfileAnalysis({ isOpen, onClose, user, repos }: Profil
                                 Analyzing Profile...
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400">
-                                Our AI is examining {user.login}'s repositories, activity patterns, and contributions.
+                                Our AI is examining {user.login}&apos;s repositories, activity patterns, and contributions.
                             </p>
                         </div>
                     ) : isError ? (
