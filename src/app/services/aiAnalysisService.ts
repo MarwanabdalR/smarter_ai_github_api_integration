@@ -2,9 +2,7 @@ import { AnalysisRequest, AnalysisResponse, ProfileAnalysis } from '../types/ana
 import { GitHubUser, GitHubRepo } from './githubApi';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// IMPORTANT: You need to set up your Gemini API key as an environment variable.
-// For example, create a .env.local file in the root of your project with:
-// NEXT_PUBLIC_GEMINI_API_KEY=your_api_key_here
+
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY!);
 
 async function getAIAnalysis(user: GitHubUser, repos: GitHubRepo[]): Promise<ProfileAnalysis> {
@@ -47,12 +45,10 @@ async function getAIAnalysis(user: GitHubUser, repos: GitHubRepo[]): Promise<Pro
   const response = await result.response;
   const text = response.text();
   
-  // The response from the AI might be wrapped in ```json ... ```, so we need to clean it.
   const cleanedText = text.replace(/^```json\s*|```$/g, '');
   
   const analysis: ProfileAnalysis = JSON.parse(cleanedText);
   
-  // The AI might not return the analysisDate, so we set it here.
   analysis.analysisDate = new Date().toISOString();
 
   return analysis;
